@@ -17,9 +17,7 @@ private:
 
 	sf::Clock clock;
 
-	sf::Vector2f targetPos;
-	Direction direction = Direction::none; // нажатое направление
-	Direction moveDir; // направление куда едет
+	Direction direction = Direction::none; // направление игрока
 
 	sf::Vector2f headPosition; 
 	sf::Vector2u position; // позиция в клетках
@@ -28,8 +26,13 @@ private:
 	sf::Vector2u targetPos;
 	sf::Vector2f dirOff;
 
-	void Move(Field& field);
-	void setTarget();
+	bool isLose = false;
+
+
+
+	void Move(Field& field, Settings& settings);
+	void setTarget(Settings& settings);
+	void chekLose(Settings& settings);
 public:
 	Player(Settings& settings, Field& field);
 
